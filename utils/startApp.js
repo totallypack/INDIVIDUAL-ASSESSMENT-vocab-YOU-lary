@@ -7,15 +7,15 @@ import formEvents from '../events/formEvents';
 import navigationEvents from '../events/navEvents';
 import { showWord } from '../pages/words';
 
-const startApp = () => {
-  domBuilder(); // BUILD THE DOM
-  domEvents(); // ADD THE EVENT LISTENTERS TO THE DOM
-  formEvents(); // ADD FORM EVENT LISTENTERS TO THE DOM
-  navBar(); // DYNAMICALLY ADD THE NAV
+const startApp = (user) => {
+  domBuilder(user); // BUILD THE DOM
+  domEvents(user); // ADD THE EVENT LISTENTERS TO THE DOM
+  formEvents(user); // ADD FORM EVENT LISTENTERS TO THE DOM
+  navBar(user); // DYNAMICALLY ADD THE NAV
   logoutButton(); // ADD THE LOGOUT BUTTON COMPONENT
-  navigationEvents(); // ATTACH THE EVENT LISTENERS TO THE NAVBAR
+  navigationEvents(user); // ATTACH THE EVENT LISTENERS TO THE NAVBAR
 
-  getWord().then((word) => showWord(word));
+  getWord(user.uid).then((word) => showWord(word));
 };
 
 export default startApp;

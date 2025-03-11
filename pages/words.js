@@ -24,9 +24,10 @@ const showWord = (array) => {
         <p class="card-title">${item.pronunciation}</p>
         <p class="card-text">${item.definition}</p>
         <i class="btn btn-danger" id="delete-word-btn--${item.firebaseKey}">Delete</i>
+        <i id="edit-word-btn--${item.firebaseKey}" class="btn btn-info">Edit</i>
       </div>
       <div class="card-footer text-body-secondary">
-        ${item.learned}
+      ${item.learned ? 'Learned ✓' : 'Not learned yet'}
       </div>
     </div>
     `;

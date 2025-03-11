@@ -11,7 +11,7 @@ const domEvents = () => {
         const [, firebaseKey] = e.target.id.split('--');
 
         deleteWord(firebaseKey).then(() => {
-          getWord().then(showWord);
+          getWord().then((data) => showWord(data));
         });
       }
     }

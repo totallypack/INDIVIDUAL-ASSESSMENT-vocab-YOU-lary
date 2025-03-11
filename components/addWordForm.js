@@ -18,6 +18,10 @@ const addWordForm = (obj = {}) => {
         <label for="definition">Definition</label>
         <textarea class="form-control" placeholder="Definition" id="definition" style="height: 100px">${obj.definition || ''}</textarea>
       </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="words-learn" ${obj.learned ? 'checked' : ''}>
+        <label class="form-check-label" for="words-learn">Learned this word?</label>
+      </div>
       <button type="submit" class="btn btn-primary">Submit Word
       </button>
     </form>`;

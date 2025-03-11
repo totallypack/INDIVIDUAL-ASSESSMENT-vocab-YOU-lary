@@ -2,15 +2,21 @@ import client from '../utils/client';
 
 const endpoint = client.databaseURL;
 
-const getWord = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/vocab.json`, {
+const getWord = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/vocab.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headrers: {
       'Content-Type': 'application/json',
     },
   })
     .then((response) => response.json())
-    .then((data) => resolve(Object.values(data)))
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
     .catch(reject);
 });
 
@@ -59,7 +65,10 @@ const learnedWord = (uid) => new Promise((resolve, reject) => {
     },
   })
     .then((response) => response.json())
-    .then((data) => resolve(Object.values(data)))
+    .then((data) => {
+      const isLearned = Object.values(data).filter((item) => item.lerned);
+      resolve(isLearned);
+    })
     .catch(reject);
 });
 
