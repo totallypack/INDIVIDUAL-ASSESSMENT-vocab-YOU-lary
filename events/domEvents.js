@@ -1,29 +1,29 @@
-import { deleteWord, getWord, getSingleWord } from '../api/wordData';
-import { showWord } from '../pages/words';
-import addWordForm from '../components/addWordForm';
+import { deleteItem, getItem, getSingleItem } from '../api/itemData';
+import { showItem } from '../pages/items';
+import addItemForm from '../components/addItemForm';
 
-const domEvents = () => {
+const domEvents = (user) => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
-    if (e.target.id.includes('delete-word')) {
+    if (e.target.id.includes('delete-item')) {
       // eslint-disable-next-line no-alert
       if (window.confirm('Want to delete?')) {
-        console.warn('CLICKED DELETE WORD', e.target.id);
+        console.warn('CLICKED DELETE ITEM', e.target.id);
         const [, firebaseKey] = e.target.id.split('--');
 
-        deleteWord(firebaseKey).then(() => {
-          getWord().then((data) => showWord(data));
+        deleteItem(firebaseKey).then(() => {
+          getItem(user.uid).then((data) => showItem(data));
         });
       }
     }
 
-    if (e.target.id.includes('add-word-btn')) {
-      addWordForm();
+    if (e.target.id.includes('add-item-btn')) {
+      addItemForm();
     }
 
-    if (e.target.id.includes('edit-word-btn')) {
+    if (e.target.id.includes('edit-item-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
 
-      getSingleWord(firebaseKey).then((wordObj) => addWordForm(wordObj));
+      getSingleItem(firebaseKey).then((itemObj) => addItemForm(itemObj));
     }
   });
 };

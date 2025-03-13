@@ -1,7 +1,10 @@
 // USE WITH FIREBASE AUTH
+import 'bootstrap/dist/css/bootstrap.min.css';
+import * as bootstrap from 'bootstrap';
 import viewDirectorBasedOnUserAuthStatus from '../utils/viewDirector';
-import 'bootstrap'; // import bootstrap elements and js
 import '../styles/main.scss';
+
+window.bootstrap = bootstrap;
 
 const init = () => {
   viewDirectorBasedOnUserAuthStatus();

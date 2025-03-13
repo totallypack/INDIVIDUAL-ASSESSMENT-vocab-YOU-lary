@@ -1,0 +1,20 @@
+{
+  "-MiBsfuTafbEQ7eAULxV": {
+    "item": "Hat of Wizardry",
+    "firebaseKey": "-MiBsfuTafbEQ7eAULxV",
+    "rarity": "Wondrous item, common (requires attunement by a wizard)",
+    "description": "You can use the hat as a spellcasting focus for your wizard spells. You can try to cast a cantrip that you don't know. The cantrip must be on the Wizard spell list, and you must make a DC 10 Intelligence (Arcana) check. If the check succeeds, you cast the spell. If the check fails, so does the spell, and the action used to cast the spell is wasted. In either case, you can't use this property again until you finish a long rest.",
+    "favorite": true,
+    "type": "Armor",
+    "uid": "yTDlrcWkG4aLyattQIdbDKyu4rD2"
+  },
+  "-MiBt86VzkC-EGmJnxjm": {
+    "item": "Instrument of Illusions",
+    "firebaseKey": "-MiBt86VzkC-EGmJnxjm",
+    "rarity": "Wondrous item, common (requires attunement)",
+    "description": "While you are playing this musical instrument, you can create harmless, illusory visual effects within a 5-foot-radius sphere centered on the instrument. If you are a bard, the radius increases to 15 feet. Sample visual effects include luminous musical notes, a spectral dancer, butterflies, and gently falling snow. The magical effects have neither substance nor sound, and they are obviously illusory. The effects end when you stop playing.",
+    "favorite": false,
+    "type": "Instrument",
+    "uid": "yTDlrcWkG4aLyattQIdbDKyu4rD2"
+  }
+}

@@ -1,11 +1,11 @@
-import { getWord } from '../api/wordData';
+import { getItem } from '../api/itemData';
 import logoutButton from '../components/logoutButton';
 import domBuilder from '../components/domBuilder';
 import navBar from '../components/navBar';
 import domEvents from '../events/domEvents';
 import formEvents from '../events/formEvents';
 import navigationEvents from '../events/navEvents';
-import { showWord } from '../pages/words';
+import { showItem } from '../pages/items';
 
 const startApp = (user) => {
   domBuilder(user); // BUILD THE DOM
@@ -15,7 +15,7 @@ const startApp = (user) => {
   logoutButton(); // ADD THE LOGOUT BUTTON COMPONENT
   navigationEvents(user); // ATTACH THE EVENT LISTENERS TO THE NAVBAR
 
-  getWord(user.uid).then((word) => showWord(word));
+  getItem(user.uid).then((item) => showItem(item));
 };
 
 export default startApp;
