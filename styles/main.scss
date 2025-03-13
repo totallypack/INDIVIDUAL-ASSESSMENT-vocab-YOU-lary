@@ -48,7 +48,7 @@ body {
     }
   }
 
-  #words-learn {
+  #cards {
     width: 90%;
     display: flex;
     flex-flow: row wrap;
@@ -86,4 +86,8 @@ body {
   .description {
     white-space: pre-wrap;
   }
+}
+
+#search {
+  margin: 0 0 0 20px;
 }

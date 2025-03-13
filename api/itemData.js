@@ -2,8 +2,8 @@ import client from '../utils/client';
 
 const endpoint = client.databaseURL;
 
-const getWord = (uid) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/vocab.json?orderBy="uid"&equalTo="${uid}"`, {
+const getItem = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/item.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headrers: {
       'Content-Type': 'application/json',
@@ -20,8 +20,8 @@ const getWord = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const createWord = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/vocab.json`, {
+const createItem = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/item.json`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -33,8 +33,8 @@ const createWord = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getSingleWord = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/vocab/${firebaseKey}.json`, {
+const getSingleItem = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/item/${firebaseKey}.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -45,8 +45,8 @@ const getSingleWord = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const deleteWord = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/vocab/${firebaseKey}.json`, {
+const deleteItem = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/item/${firebaseKey}.json`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -57,8 +57,8 @@ const deleteWord = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const learnedWord = (uid) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/vocab.json?orderBy="uid"&equalTo="${uid}"`, {
+const learnedItem = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/item.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application.json',
@@ -66,14 +66,14 @@ const learnedWord = (uid) => new Promise((resolve, reject) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      const isLearned = Object.values(data).filter((item) => item.lerned);
-      resolve(isLearned);
+      const isFav = Object.values(data).filter((item) => item.favorite);
+      resolve(isFav);
     })
     .catch(reject);
 });
 
-const updateWord = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/vocab/${payload.firebaseKey}.json`, {
+const updateItem = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/item/${payload.firebaseKey}.json`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -86,10 +86,10 @@ const updateWord = (payload) => new Promise((resolve, reject) => {
 });
 
 export {
-  getWord,
-  createWord,
-  getSingleWord,
-  deleteWord,
-  updateWord,
-  learnedWord
+  getItem,
+  createItem,
+  getSingleItem,
+  deleteItem,
+  updateItem,
+  learnedItem
 };
