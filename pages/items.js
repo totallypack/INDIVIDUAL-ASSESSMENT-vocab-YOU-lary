@@ -9,7 +9,7 @@ const emptyItem = () => {
 const showItem = (array) => {
   clearDom();
 
-  const btnString = '<button class="btn btn-lg mb-4" id="add-item-btn">Create a Magic Item</button>';
+  const btnString = '<button class="btn btn-lg mb-4" id="add-item-btn">Collect a New Magic Item</button>';
   renderToDOM('#add-button', btnString);
 
   let domString = '';
@@ -21,7 +21,7 @@ const showItem = (array) => {
       </div>
       <div class="card-body">
         <h5 class="card-title">${item.item}</h5>
-        <p class="card-title">${item.rarity}</p>
+        <p class="card-sub-title">${item.rarity}</p>
         <p class="card-text">${item.description}</p>
         <i class="btn btn-danger" id="delete-item-btn--${item.firebaseKey}">Delete</i>
         <i id="edit-item-btn--${item.firebaseKey}" class="btn btn-info">Edit</i>
