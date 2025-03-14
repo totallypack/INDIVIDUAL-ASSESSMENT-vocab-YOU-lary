@@ -1,55 +1,218 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
+// Variables for 16-bit fantasy theme
+$parchment: #f5e7c1;
+$dark-leather: #2d2113;
+$pixel-gold: #ffb900;
+$pixel-dark-gold: #cc9000;
+$blood-red: #b71c1c;
+$dungeon-blue: #0f4c81;
+$hero-green: #2e7d32;
+$magic-purple: #7b1fa2;
+$ancient-wood: #5d4a38;
+$pixel-black: #111111;
+$text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+$text-shadow-light: 1px 1px 0px rgba(0, 0, 0, 0.5);
+$pixel-border: 2px solid $pixel-black;
+$pixel-box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8);
+$fantasy-font: 'Georgia', 'Times New Roman', serif;
+$pixel-font: 'VT323', monospace;
+$pixel-header-font: 'Press Start 2P', cursive;
+
+// Mixins for pixel art styling
+@mixin pixel-border {
+  border: $pixel-border;
+  box-shadow: $pixel-box-shadow;
+}
+
+@mixin pixel-button {
+  @include pixel-border;
+  transition: all 0.1s ease;
+  font-family: $pixel-font;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  
+  &:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.8);
+  }
+  
+  &:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+  }
+}
+
+// Cleaner dark background with subtle texture
 body {
-  background-color: black;
+  background-color: $dark-leather;
+  background-image: url('https://www.transparenttextures.com/patterns/black-felt.png');
+  background-size: 300px;
+  color: $parchment;
+  font-family: $pixel-font;
+  font-size: 1.1rem;
+  position: relative;
 }
 
-.navbar-dark .navbar-brand {
-  font-family: Helvetica, sans-serif !important;
-  color: white;
-  font-weight: 900;
-  font-size: 2em;
+// 16-bit style navbar
+.navbar-dark {
+  background: $pixel-black !important;
+  border-bottom: 4px solid $pixel-gold;
+  box-shadow: 0 4px 0px rgba(0, 0, 0, 0.8);
+  
+  .navbar-brand {
+    font-family: $pixel-header-font !important;
+    color: $pixel-gold;
+    font-weight: 900;
+    font-size: 1.6em;
+    text-shadow: $text-shadow;
+    letter-spacing: 1px;
+  }
+  
+  .nav-link {
+    transition: all 0.2s ease;
+    
+    &:hover {
+      transform: scale(1.1);
+    }
+    
+    img {
+      filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.8));
+      transition: all 0.2s ease;
+      
+      &:hover {
+        filter: brightness(1.3) drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.8));
+      }
+    }
+  }
 }
 
-.grey-box {
-  float: left;
-  margin: 2px;
-  width: 200px;
-  height: 200px;
-}
-
-.logout {
-  margin: 0 20px;
-  font-size: 25px;
-  color: white;
-}
-
+// Main container styling with pixel art influence
 #main-container {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   margin-top: 100px;
   align-content: center;
+  padding: 0 10px;
 
+  // Button styling with pixel art aesthetics
   #add-button {
-    margin: 0 auto;
+    margin: 20px auto;
     text-align: center;
+    
+    .btn {
+      @include pixel-button;
+      background-color: $blood-red;
+      border: 2px solid $pixel-black;
+      color: white;
+      font-weight: bold;
+      padding: 10px 20px;
+      position: relative;
+      
+      &::before {
+        content: "";
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        right: 2px;
+        height: 2px;
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+    }
   }
 
+  // Form styling with pixel-inspired elements
   #form-container {
     width: 60%;
     margin: auto;
     justify-content: center;
-    color: white;
+    color: $parchment;
+    background-color: $dark-leather;
+    background-image: url('https://www.transparenttextures.com/patterns/black-felt.png');
+    background-size: 200px;
+    padding: 20px;
+    @include pixel-border;
+    border-radius: 0;
+
+    .form-group label {
+      color: $pixel-gold;
+      font-weight: bold;
+      font-family: $pixel-font;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-shadow: $text-shadow-light;
+    }
+
+    .form-group:not(:first-child) {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba($pixel-gold, 0.3);
+      position: relative;
+      
+      &::before {
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: $dark-leather;
+        padding: 0 10px;
+        color: $pixel-gold;
+      }
+    }
+    
+    .form-control {
+      background-color: rgba($parchment, 0.9);
+      border: 2px solid $pixel-black;
+      border-radius: 0;
+      color: $dark-leather;
+      font-family: $pixel-font;
+      
+      &:focus {
+        box-shadow: 0 0 0 0.2rem rgba($pixel-gold, 0.25);
+        border-color: $pixel-gold;
+      }
+    }
+    
+    .form-check-input:checked {
+      background-color: $pixel-gold;
+      border-color: $pixel-black;
+    }
+    
+    .btn-primary {
+      @include pixel-button;
+      margin: 20px 0 0 0;
+      background-color: $blood-red;
+      border-color: $pixel-black;
+    }
+    
+    .tag-checkboxes {
+      .form-check-inline {
+        background-color: rgba($dark-leather, 0.6);
+        padding: 5px 10px;
+        border-radius: 0;
+        margin: 0 5px 5px 15px;
+        transition: all 0.2s ease;
+        
+        .form-check-input:checked + .form-check-label {
+          color: $pixel-gold;
+          font-weight: bold;
+        }
+      }
+    }
 
     #formModal {
       color: black;
     }
   }
 
+  // Card styling with 16-bit game aesthetic - no floating animation
   #cards {
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-flow: row wrap;
     text-align: center;
@@ -58,22 +221,113 @@ body {
 
     .card {
       width: 300px;
-      margin: 5px;
+      margin: 15px;
+      background-color: $parchment;
+      @include pixel-border;
+      border-radius: 0;
+      transition: all 0.2s ease;
+      color: $dark-leather;
+      position: relative;
+      overflow: hidden;
+      
+      .card-header {
+        background-color: $dungeon-blue;
+        color: $dark-leather;
+        font-weight: bold;
+        text-shadow: $text-shadow;
+        border-bottom: 2px solid $pixel-black;
+        font-family: $pixel-font;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 1.1rem;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5), transparent);
+        }
+      }
+      
+      .card-body {
+        background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
+        background-color: $parchment;
+        padding: 15px;
+        
+        .card-title {
+          color: $pixel-gold;
+          font-family: $pixel-font;
+          font-weight: bold;
+          font-size: 1.6em;
+          margin-bottom: 5px;
+          text-shadow: $text-shadow;
+        }
+
+        .card-sub-title {
+          color: $dungeon-blue;
+          font-family: $pixel-font;
+          font-size: 1em;
+          margin-bottom: 5px;
+          text-shadow: $text-shadow-light;
+        }
+        
+        .card-text {
+          color: $dark-leather;
+          font-family: $pixel-font;
+          font-size: 1.1em;
+          margin-bottom: 20px;
+        }
+        
+        .btn-danger {
+          @include pixel-button;
+          background-color: $blood-red;
+          border-color: $pixel-black;
+          margin-right: 5px;
+        }
+        
+        .btn-info {
+          @include pixel-button;
+          background-color: $dungeon-blue;
+          border-color: $pixel-black;
+          color: white;
+        }
+      }
+
+      .card-footer {
+        background-color: $ancient-wood;
+        color: $pixel-gold;
+        font-weight: bold;
+        border-top: 2px solid $pixel-black;
+        font-family: $pixel-font;
+      }
 
       .sale-badge {
         font-size: 1em;
-        background-color: blue;
+        background-color: $dungeon-blue;
       }
     }
 
     .table {
-      margin: 10px;
+      margin: 10px auto;
       width: 80%;
-      margin: 0 auto;
+      background-color: rgba($parchment, 0.8);
+      @include pixel-border;
+      border-radius: 0;
+      
+      th {
+        background-color: $ancient-wood;
+        color: $pixel-gold;
+        font-family: $pixel-font;
+        text-transform: uppercase;
+      }
     }
   }
 }
 
+// Detail view with pixel styling
 #view {
   width: 90%;
   margin: auto;
@@ -81,13 +335,261 @@ body {
   .details {
     min-width: 50%;
     max-width: 60%;
+    background-color: $parchment;
+    @include pixel-border;
+    border-radius: 0;
+    padding: 20px;
+    color: $dark-leather;
+    font-family: $pixel-font;
   }
 
   .description {
     white-space: pre-wrap;
+    font-style: italic;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-left: 4px solid $dungeon-blue;
   }
 }
 
+// Search box with pixel styling
 #search {
   margin: 0 0 0 20px;
+  background-color: $dark-leather;
+  border: 2px solid $pixel-gold;
+  border-radius: 0;
+  color: $parchment;
+  font-family: $pixel-font;
+  
+  &::placeholder {
+    color: rgba($parchment, 0.7);
+    font-family: $pixel-font;
+  }
+  
+  &:focus {
+    background-color: lighten($dark-leather, 10%);
+    box-shadow: 0 0 0 0.2rem rgba($pixel-gold, 0.25);
+    border-color: $pixel-gold;
+    color: white;
+  }
+}
+
+// Login page with neutral styling but retro aesthetic
+#login-form-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+  url('https://www.transparenttextures.com/patterns/black-felt.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 600px;
+  padding: 15px;
+  color: white;
+  text-shadow: $text-shadow;
+  position: relative;
+  z-index: 10;
+  
+  h1 {
+    color: $pixel-gold;
+    font-family: $pixel-header-font;
+    font-size: 1.8rem;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+  }
+  
+  .lead {
+    color: $parchment;
+    font-family: $pixel-font;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+  }
+  
+  hr {
+    border-color: rgba($pixel-gold, 0.5);
+    border-width: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+  
+  p {
+    font-family: $pixel-font;
+    font-size: 1.2rem;
+  }
+}
+
+.login-card {
+  background-color: rgba($dark-leather, 0.95);
+  @include pixel-border;
+  border-radius: 0;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  color: $parchment;
+  text-shadow: none;
+  overflow: hidden;
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .card-title {
+    color: $pixel-gold;
+    font-family: $pixel-header-font;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .card-text {
+    font-family: $pixel-font;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+// Google login button with retro game styling
+#google-auth {
+  @include pixel-button;
+  background-color: $blood-red;
+  color: white;
+  font-family: $pixel-font;
+  font-size: 1.2rem;
+  padding: 12px 24px;
+  
+  &::before {
+    content: "►";  // Add a pixel-style arrow
+    margin-right: 8px;
+  }
+}
+
+// Scrollbar styling
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: $dark-leather;
+  border-left: 2px solid $pixel-black;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $ancient-wood;
+  border: 2px solid $pixel-black;
+  
+  &:hover {
+    background: lighten($ancient-wood, 10%);
+  }
+}
+
+// Empty element handling
+#cards:empty, 
+#form-container:empty,
+#view:empty {
+  display: none;
+}
+
+// CRT scan effect for the entire page
+body::before {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.1) 50%
+  );
+  background-size: 100% 4px;
+  z-index: 1001;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+.custom-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  
+  &.show {
+    display: flex;
+  }
+  
+  .modal-content {
+    width: 90%;
+    max-width: 400px;
+    background-color: $parchment;
+    @include pixel-border;
+    position: relative;
+    overflow: hidden;
+    font-family: $pixel-font;
+  }
+  
+  .modal-header {
+    font-family: $pixel-header-font;
+    background-color: $dungeon-blue;
+    color: $dark-leather;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 2px solid $pixel-black;
+    text-shadow: $text-shadow;
+    font-size: 1.8rem;
+  }
+  
+  .modal-body {
+    padding: 20px;
+    background-image: url('http://www.transparenttextures.comnone');
+    background-color: $parchment;
+    color: $dark-leather;
+    text-align: center;
+    
+    p {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      
+      &:last-child {
+        font-size: 1rem;
+        color: $blood-red;
+      }
+    }
+  }
+  
+  .modal-footer {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    background-color: rgba($ancient-wood, 0.2);
+    border-top: 2px solid $pixel-black;
+    gap: 10px;
+    
+    .btn {
+      @include pixel-button;
+      min-width: 100px;
+    }
+    
+    .btn-secondary {
+      background-color: $ancient-wood;
+      color: white;
+    }
+    
+    .btn-danger {
+      background-color: $blood-red;
+      color: white;
+    }
+  }
 }

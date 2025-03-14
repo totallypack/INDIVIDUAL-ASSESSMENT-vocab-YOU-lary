@@ -4,9 +4,11 @@ import { showItem } from '../pages/items';
 const formEvents = (user) => {
   document.querySelector('#main-container').addEventListener('submit', (e) => {
     e.preventDefault();
+
+    const tagsSelect = document.querySelector('#item-tags');
+    const selectedTags = tagsSelect ? Array.from(tagsSelect.selectedOptions).map((option) => option.value) : [];
+
     if (e.target.id.includes('submit-item')) {
-      const tagsSelect = document.querySelector('#item-tags');
-      const selectedTags = Array.from(tagsSelect.selectedOptions).map((option) => option.value);
       const payload = {
         item: document.querySelector('#item').value,
         rarity: document.querySelector('#rarity').value,
@@ -18,7 +20,6 @@ const formEvents = (user) => {
 
       createItem(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
-
         updateItem(patchPayload).then(() => {
           getItem(user.uid).then((item) => showItem(item));
         });
@@ -27,8 +28,6 @@ const formEvents = (user) => {
 
     if (e.target.id.includes('update-item')) {
       const [, firebaseKey] = e.target.id.split('--');
-      const tagsSelect = document.querySelector('#item-tags');
-      const selectedTags = Array.from(tagsSelect.selectedOptions).map((option) => option.value);
       const patchPayload = {
         item: document.querySelector('#item').value,
         rarity: document.querySelector('#rarity').value,

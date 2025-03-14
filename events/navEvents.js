@@ -1,10 +1,11 @@
 import { getItem } from '../api/itemData';
+import logoutButton from '../components/logoutButton';
 import { showItem, emptyItem } from '../pages/items';
-import { signOut } from '../utils/auth';
+// import { signOut } from '../utils/auth';
 
 const navigationEvents = (user) => {
-  document.querySelector('#logout-button')
-    .addEventListener('click', signOut);
+  // document.querySelector('#logout-button').addEventListener('click', signOut);
+  logoutButton();
 
   document.querySelector('#all-favorites').addEventListener('click', () => {
     getItem(user.uid).then((words) => {
@@ -43,9 +44,9 @@ const navigationEvents = (user) => {
     }
   });
 
-  // STRETCH: SEARCH
   document.querySelector('#search').addEventListener('keyup', (e) => {
     const searchValue = document.querySelector('#search').value.toLowerCase();
+
     if (e.keyCode === 13) { // Enter key
       getItem(user.uid).then((items) => {
         const searchResults = items.filter((item) => {
@@ -62,6 +63,7 @@ const navigationEvents = (user) => {
           // Combine all the search criteria
           return nameMatch || rarityMatch || descMatch || typeMatch || typeStringMatch;
         });
+
         if (searchResults.length) {
           showItem(searchResults);
         } else {
