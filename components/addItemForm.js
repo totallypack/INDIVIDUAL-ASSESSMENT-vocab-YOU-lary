@@ -58,6 +58,10 @@ const addItemForm = (obj = {}) => {
         <input type="checkbox" class="form-check-input" id="item-favorite" ${obj.favorite ? 'checked' : ''}>
         <label class="form-check-label" for="words-learn">Favorite</label>
       </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="item-public" ${obj.public ? 'checked' : ''}>
+        <label class="form-check-label" for="item-public">Share with Friends</label>
+      </div>
       <button type="submit" class="btn btn-primary">${obj.firebaseKey ? 'Update' : 'Submit'} Item
       </button>
     </form>`;

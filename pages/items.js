@@ -2,7 +2,7 @@ import clearDom from '../utils/clearDom';
 import renderToDOM from '../utils/renderToDom';
 
 const emptyItem = () => {
-  const domString = '<h1>No Magic Items</h1>';
+  const domString = '<h1 id="emptyItems">NO MAGIC ITEMS</h1>';
   renderToDOM('#cards', domString);
 };
 
@@ -28,6 +28,7 @@ const showItem = (array) => {
       </div>
       <div class="card-footer text-body-secondary">
       ${item.favorite ? 'Favorite ✓' : ''}
+      ${item.public ? 'Shared ✓' : ''}
       </div>
     </div>
     `;

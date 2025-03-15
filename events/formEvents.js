@@ -14,8 +14,10 @@ const formEvents = (user) => {
         rarity: document.querySelector('#rarity').value,
         description: document.querySelector('#description').value,
         favorite: document.querySelector('#item-favorite').checked,
+        public: document.querySelector('#item-public').checked,
         type: selectedTags,
-        uid: user.uid
+        uid: user.uid,
+        timestamp: Date.now()
       };
 
       createItem(payload).then(({ name }) => {
@@ -33,6 +35,7 @@ const formEvents = (user) => {
         rarity: document.querySelector('#rarity').value,
         description: document.querySelector('#description').value,
         favorite: document.querySelector('#item-favorite').checked,
+        public: document.querySelector('#item-public').checked,
         type: selectedTags,
         firebaseKey,
         uid: user.uid

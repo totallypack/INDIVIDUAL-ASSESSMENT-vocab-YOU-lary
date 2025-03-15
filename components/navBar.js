@@ -57,6 +57,29 @@ const navBar = () => {
               aria-label="Search"
             />
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="sortDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                 Sort By
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="sortDropdown">
+                  <li><a class="dropdown-item" href="#" id="sort-alphabetical">Name (A-Z)</a></li>
+                  <li><a class="dropdown-item" href="#" id="sort-alphabetical-desc">Name (Z-A)</a></li>
+                  <li><a class="dropdown-item" href="#" id="sort-newest">Newest First</a></li>
+                  <li><a class="dropdown-item" href="#" id="sort-oldest">Oldest First</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="friendsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Your Party
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="friendsDropdown">
+                <li><a class="dropdown-item" href="#" id="add-friend">Add Friend</a></li>
+                <li><a class="dropdown-item" href="#" id="friend-requests">Friend Requests</a></li>
+                <li><a class="dropdown-item" href="#" id="view-friends">View Friends</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#" id="shared-items">Shared Items</a></li>
+              </ul>
+            </li>
           </ul>
           <span class="navbar-text">
             <div id="logout-button"></div>
