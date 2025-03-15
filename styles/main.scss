@@ -46,7 +46,7 @@ $pixel-header-font: 'Press Start 2P', cursive;
   }
 }
 
-// Cleaner dark background with subtle texture
+// dark background with subtle texture
 body {
   background-color: $dark-leather;
   background-image: url('https://www.transparenttextures.com/patterns/black-felt.png');
@@ -90,7 +90,7 @@ body {
   }
 }
 
-// Main container styling with pixel art influence
+// Main container
 #main-container {
   display: flex;
   flex-direction: column;
@@ -99,7 +99,7 @@ body {
   align-content: center;
   padding: 0 10px;
 
-  // Button styling with pixel art aesthetics
+  // Buttons
   #add-button {
     margin: 20px auto;
     text-align: center;
@@ -125,7 +125,11 @@ body {
     }
   }
 
-  // Form styling with pixel-inspired elements
+  #emptyItems {
+    font-family: $pixel-font;
+  }
+
+  // Forms
   #form-container {
     width: 60%;
     margin: auto;
@@ -210,7 +214,7 @@ body {
     }
   }
 
-  // Card styling with 16-bit game aesthetic - no floating animation
+  // Cards
   #cards {
     width: 100%;
     display: flex;
@@ -259,6 +263,7 @@ body {
         
         .card-title {
           color: $pixel-gold;
+          text-transform: uppercase;
           font-family: $pixel-font;
           font-weight: bold;
           font-size: 1.6em;
@@ -267,8 +272,9 @@ body {
         }
 
         .card-sub-title {
-          color: $dungeon-blue;
+          color: $dark-leather;
           font-family: $pixel-font;
+          text-transform: uppercase;
           font-size: 1em;
           margin-bottom: 5px;
           text-shadow: $text-shadow-light;
@@ -327,6 +333,23 @@ body {
   }
 }
 
+#cards .card.shared-item-card {
+  .card-header {
+    background-color: $ancient-wood;
+    color: $pixel-gold;
+    font-family: $pixel-font;
+    text-transform: uppercase;
+  }
+  
+  .card-body {
+    .friend-owner {
+      color: $dungeon-blue;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+  }
+}
+
 // Detail view with pixel styling
 #view {
   width: 90%;
@@ -352,7 +375,7 @@ body {
   }
 }
 
-// Search box with pixel styling
+// Search Box
 #search {
   margin: 0 0 0 20px;
   background-color: $dark-leather;
@@ -374,7 +397,49 @@ body {
   }
 }
 
-// Login page with neutral styling but retro aesthetic
+.dropdown-menu-dark {
+  background-color: $pixel-black;
+  border: 2px solid $pixel-gold;
+  padding: 0;
+  
+  .dropdown-item {
+    color: $parchment;
+    font-family: $pixel-font;
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba($pixel-gold, 0.3);
+    
+    &:hover {
+      background-color: $ancient-wood;
+      color: $pixel-gold;
+    }
+    
+    &:active, &:focus {
+      background-color: $dungeon-blue;
+    }
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.dropdown-toggle::after {
+  color: $pixel-gold;
+}
+
+#sortDropdown {
+  margin: 0 0 0 50px;
+  font-family: $pixel-font;
+  font-size: 1.2em;
+}
+
+#friendsDropdown {
+  margin: 0 0 0 30px;
+  font-family: $pixel-font;
+  font-size: 1.2em;
+}
+
+// Login page
 #login-form-container {
   height: 100vh;
   display: flex;
@@ -454,7 +519,7 @@ body {
   }
 }
 
-// Google login button with retro game styling
+// Google login button
 #google-auth {
   @include pixel-button;
   background-color: $blood-red;
@@ -464,7 +529,7 @@ body {
   padding: 12px 24px;
   
   &::before {
-    content: "►";  // Add a pixel-style arrow
+    content: "►";
     margin-right: 8px;
   }
 }
@@ -592,4 +657,134 @@ body::before {
       color: white;
     }
   }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.fade-out {
+  animation: fadeOut 0.3s forwards;
+}
+
+// Friends and Shared Items
+.friends-container,
+.friend-requests-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  h2 {
+    font-family: $pixel-header-font;
+    color: $pixel-gold;
+    text-shadow: $text-shadow;
+    margin-bottom: 20px;
+  }
+
+  .card-grid {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .friend-card,
+  .friend-request-card {
+    width: 300px;
+    background-color: $parchment;
+    @include pixel-border;
+    border-radius: 0;
+    
+    .card-body {
+      font-family: $pixel-font;
+      padding: 15px;
+      
+      .card-title {
+        color: $dungeon-blue;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+      
+      .card-text {
+        color: $dark-leather;
+        margin-bottom: 15px;
+      }
+      
+      .btn {
+        @include pixel-button;
+        margin-right: 10px;
+        margin-bottom: 17px;
+        
+        &.btn-danger {
+          background-color: $blood-red;
+        }
+        
+        &.btn-primary {
+          background-color: $dungeon-blue;
+        }
+      }
+    }
+  }
+}
+
+// Friend Form
+.friend-form-container {
+  width: 60%;
+  margin: auto;
+  background-color: $dark-leather;
+  @include pixel-border;
+  padding: 20px;
+  
+  h2 {
+    font-family: $pixel-header-font;
+    color: $pixel-gold;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: $text-shadow;
+  }
+  
+  #add-friend-form {
+    .form-group {
+      margin-bottom: 20px;
+      
+      label {
+        font-family: $pixel-font;
+        color: $pixel-gold;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+      
+      .form-control {
+        background-color: $parchment;
+        @include pixel-border;
+        font-family: $pixel-font;
+        color: $dark-leather;
+        
+        &:focus {
+          border-color: $pixel-gold;
+          box-shadow: 0 0 0 0.2rem rgba($pixel-gold, 0.25);
+        }
+      }
+    }
+    
+    .btn-primary {
+      @include pixel-button;
+      background-color: $blood-red;
+      color: white;
+      font-family: $pixel-font;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.alert {
+  background-color: $dungeon-blue;
+  color: $dark-leather;
+  font-family: $pixel-font;
+  @include pixel-border;
+  margin-top: 15px;
 }
