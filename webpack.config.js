@@ -8,6 +8,11 @@ const path = require('path');
 const dotenv = require('dotenv').config({path: __dirname + '/.env'});
 
 module.exports = {
+  output: {
+    path: path.resolve(__dirname, 'build'),
+    filename: 'bundle.js',
+    clean: true // This will clean the build folder before each build
+  },
   entry: './public/main.js',
   plugins: [
     new HtmlWebPackPlugin({
